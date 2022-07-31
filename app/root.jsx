@@ -1,10 +1,12 @@
 //import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
-import { Outlet, LiveReload } from '@remix-run/react';
+import { Outlet, LiveReload, Link } from '@remix-run/react';
 
 export default function App() {
 	return (
 		<Document>
-			<Outlet />
+			<Layout>
+				<Outlet />
+			</Layout>
 		</Document>
 	);
 }
@@ -20,6 +22,24 @@ function Document({ children, title }) {
 				{process.env.NODE_ENV === 'development' ? <LiveReload /> : null}
 			</body>
 		</html>
+	);
+}
+
+function Layout({ children }) {
+	return (
+		<>
+			<nav className='navbar'>
+				<Link to='/' className='logo'>
+					Remix
+				</Link>
+				<ul>
+					<li>
+						<Link to='/posts'>Posts</Link>
+					</li>
+				</ul>
+			</nav>
+			<div className='container'>{children}</div>
+		</>
 	);
 }
 
