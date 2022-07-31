@@ -43,6 +43,18 @@ function Layout({ children }) {
 	);
 }
 
+export function ErrorBoundary({ error }) {
+	console.log(error);
+	return (
+		<Document>
+			<Layout>
+				<h1>Error</h1>
+				<div>{error.message}</div>
+			</Layout>
+		</Document>
+	);
+}
+
 /* export const meta = () => ({
 	charset: 'utf-8',
 	title: 'New Remix App',

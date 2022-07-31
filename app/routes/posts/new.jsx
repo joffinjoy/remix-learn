@@ -4,7 +4,7 @@ import { Link } from '@remix-run/react';
 export const action = async ({ request }) => {
 	const form = await request.formData();
 	console.log(form.get('title'), form.get('body'));
-	return redirect('/posts');
+	//return redirect('/posts');
 };
 
 const NewPost = () => {
@@ -34,5 +34,15 @@ const NewPost = () => {
 		</>
 	);
 };
+
+export function ErrorBoundary({ error }) {
+	console.log(error);
+	return (
+		<div>
+			<h1>Error</h1>
+			<div>{error.message}</div>
+		</div>
+	);
+}
 
 export default NewPost;
